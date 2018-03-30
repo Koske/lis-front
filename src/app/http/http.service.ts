@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { AppConfig } from "../app-configuration";
+import { AppConfig } from '../app-configuration';
 
 @Injectable()
 export class HttpService {
@@ -23,5 +23,33 @@ export class HttpService {
 		};
 
 		return this.http.get(url + givenUrl, options);
+	}
+
+	getUserData(givenUrl, api: boolean = true) {
+		let url = (api) ? AppConfig.BASE_API_URL : AppConfig.BASE_URL;
+
+		let headers: any = new HttpHeaders({
+			'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': '*'
+		});
+
+		// this.http.get(url + givenUrl, headers).subscribe(data => {
+		// 	console.log(data);
+		// })
+
+		return this.http.get(url + givenUrl, headers);
+	}
+
+	post(givenUrl, body, api: boolean = true) {
+		let url = (api) ? AppConfig.BASE_API_URL : AppConfig.BASE_URL;
+
+		let headers: any = new HttpHeaders({
+		  'Content-Type': 'application/json',
+		  'Access-Control-Allow-Origin': '*',
+		  'Authorization': 'Bearer '+ localStorage.getItem('access_token')
+		  });
+
+		  return this.http.post(url + givenUrl, body, headers);
+
 	}
 }
