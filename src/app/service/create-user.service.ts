@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../http/http.service';
 import { AuthConfig } from '../auth/auth-config';
-import { HttpParams } from '@angular/common/http';
+import { HttpParams, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class CreateUserService {
@@ -10,9 +10,10 @@ export class CreateUserService {
   constructor(private httpService: HttpService) { }
 
   register(user: any) {
-    console.log(localStorage.getItem(user));
+    let headers = new HttpHeaders();
+    headers = headers.set(  'Access-Control-Allow-Origin', '*');
 
-    this.httpService.post('user/create', user, true).subscribe(res => {
+    this.httpService.post('user/create', {headers, user}, true).subscribe(res => {
         console.log(res);
     });
   }

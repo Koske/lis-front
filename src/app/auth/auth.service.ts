@@ -6,6 +6,7 @@ import { HttpParams } from '@angular/common/http';
 @Injectable()
 export class AuthService {
   user: any;
+  access_token: any;
 
   constructor(private httpService: HttpService) { }
 
@@ -20,8 +21,8 @@ export class AuthService {
 
 
       this.httpService.get('oauth/v2/token', params, false).subscribe(res => {
-          console.log(res.access_token);
-          localStorage.setItem('access_token', res.access_token);
+          this.access_token = res;
+          localStorage.setItem('access_token', this.access_token.access_token);
 	  });
   }
   

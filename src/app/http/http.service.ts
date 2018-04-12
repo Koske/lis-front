@@ -40,6 +40,28 @@ export class HttpService {
 		return this.http.get(url + givenUrl, headers);
 	}
 
+	getUsers(givenUrl, params:any, api: boolean = true) {
+		let url = (api) ? AppConfig.BASE_API_URL : AppConfig.BASE_URL;
+
+		let headers: any = new HttpHeaders({
+			'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': '*'
+		});
+
+		return this.http.get(url + givenUrl, {headers: headers, params: params });
+	}
+
+	getSearch(givenUrl, params:any, api: boolean = true){
+		let url = (api) ? AppConfig.BASE_API_URL : AppConfig.BASE_URL;
+
+		let headers: any = new HttpHeaders({
+			'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': '*'
+		});
+
+		return this.http.get(url + givenUrl, {headers: headers, params: params});
+	}
+
 	post(givenUrl, body, api: boolean = true) {
 		let url = (api) ? AppConfig.BASE_API_URL : AppConfig.BASE_URL;
 
@@ -50,6 +72,5 @@ export class HttpService {
 		  });
 
 		  return this.http.post(url + givenUrl, body, headers);
-
 	}
 }

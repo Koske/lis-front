@@ -11,11 +11,15 @@ import { RegistrationComponent } from './registration/registration.component';
 import { FormsModule } from '@angular/forms';
 import { CreateUserService } from './service/create-user.service';
 import { GetUserDataService } from './service/get-user-data.service';
+import { GetUsersService } from './service/get-users.service';
+import { UserTableComponent } from './user-table/user-table.component';
+import { SearchService } from './service/search.service';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegistrationComponent}
+    { path: 'register', component: RegistrationComponent},
+    { path: 'user-table', component: UserTableComponent}
 ];
 
 
@@ -25,7 +29,8 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    UserTableComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,9 @@ const appRoutes: Routes = [
   providers: [HttpService,
               AuthService,
               CreateUserService,
-              GetUserDataService],
+              GetUserDataService,
+              GetUsersService,
+              SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
