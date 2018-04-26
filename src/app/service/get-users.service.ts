@@ -11,11 +11,11 @@ export class GetUsersService {
     getUsers(users: any, page: any, perPage: any) {
         console.log(localStorage.getItem(users));
 
-        const params = {
+        const params:any = {
             page: page,
             perPage: perPage
         }
-
-        return this.httpService.getUsers('user/get', params, true);
+        
+        return this.httpService.get('users/get', params, true);
       }
 }

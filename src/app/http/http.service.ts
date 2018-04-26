@@ -14,7 +14,8 @@ export class HttpService {
 
   		let headers = new HttpHeaders({
 			'Content-Type': 'application/json',
-			'Access-Control-Allow-Origin': '*'
+			'Access-Control-Allow-Origin': '*',
+			'Authorization': 'Bearer '+ localStorage.getItem('access_token')
 			});
 
   		let options = {
@@ -40,28 +41,6 @@ export class HttpService {
 		return this.http.get(url + givenUrl, headers);
 	}
 
-	getUsers(givenUrl, params:any, api: boolean = true) {
-		let url = (api) ? AppConfig.BASE_API_URL : AppConfig.BASE_URL;
-
-		let headers: any = new HttpHeaders({
-			'Content-Type': 'application/json',
-			'Access-Control-Allow-Origin': '*'
-		});
-
-		return this.http.get(url + givenUrl, {headers: headers, params: params });
-	}
-
-	getSearch(givenUrl, params:any, api: boolean = true){
-		let url = (api) ? AppConfig.BASE_API_URL : AppConfig.BASE_URL;
-
-		let headers: any = new HttpHeaders({
-			'Content-Type': 'application/json',
-			'Access-Control-Allow-Origin': '*'
-		});
-
-		return this.http.get(url + givenUrl, {headers: headers, params: params});
-	}
-
 	post(givenUrl, body, api: boolean = true) {
 		let url = (api) ? AppConfig.BASE_API_URL : AppConfig.BASE_URL;
 
@@ -71,6 +50,18 @@ export class HttpService {
 		  'Authorization': 'Bearer '+ localStorage.getItem('access_token')
 		  });
 
-		  return this.http.post(url + givenUrl, body, headers);
+		  return this.http.post(url + givenUrl, JSON.stringify(body), headers);
+	}
+
+	editUser(givenUrl, body, api: boolean = true) {
+		let url = (api) ? AppConfig.BASE_API_URL : AppConfig.BASE_URL;
+
+		let headers: any = new HttpHeaders({
+		  'Content-Type': 'application/json',
+		  'Access-Control-Allow-Origin': '*',
+		  'Authorization': 'Bearer '+ localStorage.getItem('access_token')
+		});
+
+		return this.http.post(url + givenUrl, body, headers);
 	}
 }

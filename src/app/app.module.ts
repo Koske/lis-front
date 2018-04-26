@@ -14,12 +14,18 @@ import { GetUserDataService } from './service/get-user-data.service';
 import { GetUsersService } from './service/get-users.service';
 import { UserTableComponent } from './user-table/user-table.component';
 import { SearchService } from './service/search.service';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { EditUserService } from './service/edit-user.service';
+import { CheckInService } from './service/check-in.service';
+import { CheckOutService } from './service/check-out.service';
+import { UserIsCheckedInService } from './service/user-is-checked-in.service';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegistrationComponent},
-    { path: 'user-table', component: UserTableComponent}
+    { path: 'user-table', component: UserTableComponent},
+    { path: 'edit-user', component: EditUserComponent}
 ];
 
 
@@ -30,7 +36,8 @@ const appRoutes: Routes = [
     LoginComponent,
     HomeComponent,
     RegistrationComponent,
-    UserTableComponent
+    UserTableComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +51,11 @@ const appRoutes: Routes = [
               CreateUserService,
               GetUserDataService,
               GetUsersService,
-              SearchService],
+              SearchService,
+              EditUserService,
+              CheckInService,
+              CheckOutService,
+              UserIsCheckedInService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

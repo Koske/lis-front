@@ -12,12 +12,12 @@ export class SearchService {
     getSearch(users: any, page: any, perPage: any, searchTerm: any) {
         console.log(localStorage.getItem(users));
 
-        const params = {
+        const params:any = {
             page: page,
             perPage: perPage,
             searchTerm: searchTerm
         }
 
-        return this.httpService.getSearch('user/search', params, true);
+        return this.httpService.get('user/search', params, true);
       }
 }

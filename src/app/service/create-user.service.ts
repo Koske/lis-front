@@ -13,7 +13,7 @@ export class CreateUserService {
     let headers = new HttpHeaders();
     headers = headers.set(  'Access-Control-Allow-Origin', '*');
 
-    this.httpService.post('user/create', {headers, user}, true).subscribe(res => {
+    this.httpService.post('user/create', user, true).subscribe(res => {
         console.log(res);
     });
   }

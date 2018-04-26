@@ -25,7 +25,4 @@ export class RegistrationComponent implements OnInit {
   onCreateUser(form: NgForm) {
     this.createUser.register(form.value);
   }
-
- 
-
 }

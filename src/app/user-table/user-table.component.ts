@@ -12,6 +12,8 @@ import { Subject } from 'rxjs/Subject';
 export class UserTableComponent implements OnInit {
   users: any;
   pages: any[] = [];
+  totalPages: any;
+  searchPages: any;
 
   constructor(private service: GetUsersService, private searchService: SearchService) { }
 
@@ -46,12 +48,14 @@ export class UserTableComponent implements OnInit {
 
   getAllUsers(page){
     this.service.getUsers(this.users, page, 5).subscribe(data => {
+      console.log('asdasdasdjaskjdasd');
       console.log(data);
-      for(let i = 1; i <= data.total_pages; i++){
+      this.totalPages = data;
+      for(let i = 1; i <= this.totalPages.total_pages; i++){
         this.pages.push(i);
       }
 
-      data.total_pages = this.pages;
+      this.totalPages.total_pages = this.pages;
       this.users = data;
     });
   }
@@ -59,17 +63,28 @@ export class UserTableComponent implements OnInit {
   search(page, searchTerm){
     this.searchService.getSearch(this.users, page, 5, searchTerm).subscribe(data => {
       console.log(data);
+      this.searchPages = data;
       this.pages = [];
-      for(let i = 1; i <= data.total_pages; i++){
+      for(let i = 1; i <= this.searchPages.total_pages; i++){
         this.pages.push(i);
       }
 
-      data.total_pages = this.pages;
+
+      this.searchPages.total_pages = this.pages;
       this.users = data;
+      console.log(this.users);
     });
   }
 
   searchBtn(searchTerm:any){
     this.search(1,searchTerm);
+  }
+
+  edit(user: any) {
+    console.log(user);
+  }
+
+  delete(user: any) {
+    console.log(user);
   }
 }
