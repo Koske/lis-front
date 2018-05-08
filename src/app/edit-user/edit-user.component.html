@@ -31,36 +31,36 @@
                     </h3>
                     <h4 class="text-muted text-center m-t-0"><b>Create user</b></h4>
 
-                    <form class="form-horizontal m-t-20" action="index.html" (ngSubmit)="onCreateUser(f)" #f="ngForm">
+                    <form class="form-horizontal m-t-20" action="index.html" (ngSubmit)="onEditUser(f)" #f="ngForm">
 
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="FirstName" name="firstName" ngModel>
+                                <input class="form-control" type="text" required="" placeholder="FirstName" name="firstName" [(ngModel)]="userForEdit.first_name">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="LastName" name="lastName" ngModel>
+                                <input class="form-control" type="text" required="" placeholder="LastName" name="lastName" [(ngModel)]="userForEdit.last_name">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input class="form-control" type="email" required="" placeholder="Email" name="email" ngModel>
+                                <input class="form-control" type="email" required="" placeholder="Email" name="email" [(ngModel)]="userForEdit.email">
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <div class="col-xs-12">
                                 <input class="form-control" type="password" required="" placeholder="Password" name="password" ngModel>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">UserType</label>
                             <div class="col-sm-10">
-                                <select class="form-control" ngModel name="userTypeId" *ngIf="userData">
+                                <select class="form-control" [ngModel]="userForEdit.user_type.id" name="userTypeId" *ngIf="userData">
                                     <option *ngFor="let userType of userData.user_types" value="{{userType.id}}">{{userType.name}}</option>
                                 </select>
                             </div>
@@ -69,8 +69,8 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Position</label>
                             <div class="col-sm-10">
-                                <select class="form-control" ngModel name="positionId" *ngIf="userData">
-                                    <option *ngFor="let positions of userData.positions" value="{{positions.id}}">{{positions.name}}</option>                
+                                <select class="form-control" [ngModel]="userForEdit.position.id" name="positionId" *ngIf="userData">
+                                    <option *ngFor="let positions of userData.positions" value="{{positions.id}}" >{{positions.name}}</option>                
                                 </select>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Team</label>
                             <div class="col-sm-10">
-                                <select class="form-control" ngModel name="teamId" *ngIf="userData">
+                                <select class="form-control" [ngModel]="userForEdit.team.id" name="teamId" *ngIf="userData">
                                     <option *ngFor="let teams of userData.teams" value="{{teams.id}}">{{teams.name}}</option>
                                 </select>
                             </div>

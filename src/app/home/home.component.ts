@@ -12,6 +12,7 @@ import { UserIsCheckedInService } from '../service/user-is-checked-in.service';
 export class HomeComponent implements OnInit {
   checkedInOut: boolean;
   user_checked: any;
+  business_checked: boolean;
 
   constructor(private authService: AuthService,
               private checkInService: CheckInService,
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
               private userIsCheckIn: UserIsCheckedInService) { }
 
   ngOnInit() {
+    this.business_checked = false;
     this.userIsCheckIn.userIsCheckedIn().subscribe(
       data => {
         this.user_checked = data;
@@ -32,7 +34,7 @@ export class HomeComponent implements OnInit {
   }
 
   onCheckIn() {
-    this.checkInService.checkIn().subscribe(
+    this.checkInService.checkIn(this.business_checked).subscribe(
       data => {
         this.checkedInOut = true;
       }
@@ -45,6 +47,14 @@ export class HomeComponent implements OnInit {
         this.checkedInOut = false;
       }
     );
+  }
+
+  onBusinessCheck() {
+    if (this.business_checked) {
+      this.business_checked = false;
+    } else {
+      this.business_checked = true;
+    }
   }
 
 }

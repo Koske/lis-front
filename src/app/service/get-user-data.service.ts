@@ -9,12 +9,18 @@ export class GetUserDataService {
     constructor(private httpService: HttpService) { }
 
     getUserData() {
-        // console.log(localStorage.getItem(user));
+        return this.httpService.getUserData('user/data', true);
+    }
+
+    getUserById(id) {
+        // console.log("user_id: ", id.id);
 
         // this.httpService.getUserData('user/create-data', true).subscribe(data => {
         //     	console.log(data);
         // });
 
-        return this.httpService.getUserData('user/create-data', true);
+        return this.httpService.post('user/get', {user_id: id.id}, true);
     }
+
+
 }

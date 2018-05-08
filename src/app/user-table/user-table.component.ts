@@ -3,6 +3,7 @@ import { GetUsersService } from '../service/get-users.service';
 import { GetUserDataService } from '../service/get-user-data.service';
 import { SearchService } from '../service/search.service';
 import { Subject } from 'rxjs/Subject';
+import { DeleteUserService } from '../service/delete-user.service';
 
 @Component({
   selector: 'app-user-table',
@@ -15,7 +16,9 @@ export class UserTableComponent implements OnInit {
   totalPages: any;
   searchPages: any;
 
-  constructor(private service: GetUsersService, private searchService: SearchService) { }
+  constructor(private service: GetUsersService, 
+              private searchService: SearchService,
+              private deleteService: DeleteUserService) { }
 
   ngOnInit() {
     console.log(this.users);
@@ -79,12 +82,10 @@ export class UserTableComponent implements OnInit {
   searchBtn(searchTerm:any){
     this.search(1,searchTerm);
   }
-
-  edit(user: any) {
-    console.log(user);
-  }
-
+  
   delete(user: any) {
-    console.log(user);
+    if(confirm("Are you sure to delete "+ user.first_name)) {
+      this.deleteService.deleteUser(user);
+    }
   }
 }

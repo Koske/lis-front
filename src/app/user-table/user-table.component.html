@@ -321,7 +321,7 @@
                                                     <td>{{user['user_type']['name']}}</td>
                                                     <td>{{user['position']['name']}}</td>
                                                     <td>{{user.team.name}}</td>
-                                                    <td><button routerLink="/edit-user" class="btn btn-success" (click)="edit(user)">Edit</button></td>
+                                                    <td><button [routerLink]="['/edit-user', user.id]" class="btn btn-success">Edit</button></td>
                                                     <td><button class="btn btn-danger" (click)="delete(user)">Delete</button></td>
                                                 </tr>
                                                 </tbody>

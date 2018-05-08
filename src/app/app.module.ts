@@ -19,13 +19,14 @@ import { EditUserService } from './service/edit-user.service';
 import { CheckInService } from './service/check-in.service';
 import { CheckOutService } from './service/check-out.service';
 import { UserIsCheckedInService } from './service/user-is-checked-in.service';
+import { DeleteUserService } from './service/delete-user.service';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegistrationComponent},
     { path: 'user-table', component: UserTableComponent},
-    { path: 'edit-user', component: EditUserComponent}
+    { path: 'edit-user/:id', component: EditUserComponent}
 ];
 
 
@@ -55,7 +56,8 @@ const appRoutes: Routes = [
               EditUserService,
               CheckInService,
               CheckOutService,
-              UserIsCheckedInService],
+              UserIsCheckedInService,
+              DeleteUserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

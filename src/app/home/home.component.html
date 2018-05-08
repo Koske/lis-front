@@ -425,7 +425,7 @@
                               <button class="btn btn-success" *ngIf="!checkedInOut" (click)="onCheckIn()">CheckIn</button>
                               <button class="btn btn-danger" *ngIf="checkedInOut" (click)="onCheckOut()">CheckOut</button>
                               <div class="checkbox checkbox-success checkbox-circle">
-                                  <input id="checkbox-10" type="checkbox">
+                                  <input id="checkbox-10" type="checkbox" (click)="onBusinessCheck()" name="business_checked" ngModel>
                                   <label for="checkbox-10">
                                       Business check-out
                                   </label>

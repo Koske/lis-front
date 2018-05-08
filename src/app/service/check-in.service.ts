@@ -8,8 +8,8 @@ export class CheckInService {
 
     constructor(private httpService: HttpService) { }
 
-    checkIn() {
-        return this.httpService.post('presence/checkin', {email: localStorage.getItem('email')}, true);
+    checkIn(business_checked: boolean) {
+        return this.httpService.post('presence/checkin', {email: localStorage.getItem('email'), "business": business_checked}, true);
       }
 
 }
