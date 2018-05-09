@@ -1,0 +1,18 @@
+<form (ngSubmit)="onSubmitTask()" #t="ngForm">
+  <h1>Task</h1>
+  <div class="form-group">
+      <label>Name</label>
+      <input ngModel type="text" class="form-control" name="name" required>
+      <label>Description</label>
+      <input ngModel type="text" class="form-control" name="description" required>
+      <label>Start date</label>
+      <input ngModel type="date" class="form-control" name="dateStarted" placeholder="mm/dd/yyyy" id="datepicker">
+      <label>Hour</label>
+      <input ngModel type="number" min="0" class="form-control" name="hour" required>
+  </div>
+  <button
+    class="btn btn-primary"
+    type="submit"
+    [disabled]="!t.valid">Submit
+  </button>
+ </form>

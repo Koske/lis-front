@@ -5,15 +5,14 @@ import { HttpParams, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class DeleteUserService {
-  user: any;
 
   constructor(private httpService: HttpService) { }
 
-  deleteUser(user: any) {
+  deleteUser(id: any) {
     let headers = new HttpHeaders();
     headers = headers.set(  'Access-Control-Allow-Origin', '*');
 
-    this.httpService.post('user/delete', user, true).subscribe(res => {
+    this.httpService.post('user/delete', {id: id}, true).subscribe(res => {
         console.log(res);
     });
   }

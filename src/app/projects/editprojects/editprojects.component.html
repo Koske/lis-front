@@ -1,0 +1,16 @@
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+  <div class="form-group">
+      <label>Project Name</label>
+      <input ngModel type="text" class="form-control" name="name" required>
+      <label>Description</label>
+      <input ngModel type="text" class="form-control" name="description" required>
+      <label>Start date</label>
+      <input ngModel type="date" class="form-control" name="dateStarted" placeholder="mm/dd/yyyy" id="datepicker">
+      <label>Estimated duration</label>
+      <input ngModel type="date" class="form-control" name="estimatedDuration" placeholder="mm/dd/yyyy" id="datepicker">
+</div>
+  <button
+class="btn btn-primary"
+type="submit"
+[disabled]="!f.valid">Submit</button>
+</form>

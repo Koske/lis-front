@@ -1,0 +1,47 @@
+<div class="panel panel-primary">
+  <div class="panel-body">
+      <h4 class="m-t-0 m-b-30">Projects</h4>
+      <div style="float: right">
+
+        <button type="button" (click)="onDetails()" class="btn btn-info">Details</button>
+        <button type="button" (click)="onEdit()" class="btn btn-primary">Edit</button>
+        <button type="button" (click)="onRemove()" class="btn btn-danger">Remove</button>
+      </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th data-priority="1">Description</th>
+              <th data-priority="3">Stard date</th>
+              <th data-priority="3">Estimated duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="{{project.id}}" (click)="stashInfo(project.id, i)" style="cursor: pointer; "  *ngFor="let project of projectsIter; let i = index" >
+              <td>{{project.name}}</td>
+              <td>{{project.description}}</td>
+              <td>{{project.start_date}}</td>
+              <td>{{project.estimated_duration}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <ul *ngIf="totalPages.total_pages" class="pagination" style="cursor: pointer">
+            <li [ngClass]="{disabled:projects?.page == 1}">
+                <a (click)="newPage(1)">First</a>
+            </li>
+            <li [ngClass]="{disabled:projects?.page == 1}">
+                <a (click)="previousPage(projects.page - 1)">Previous</a>
+            </li>
+            <li *ngFor="let page of projects?.total_pages" [ngClass]="{active:projects?.page == page}">
+                <a (click)="newPage(page)">{{page}}</a>
+            </li>
+            <li [ngClass]="{disabled:projects?.page == projects?.total_pages?.length}">
+                <a  (click)="nextPage(projects.page, projects.total_pages.length)">Next</a>
+            </li>
+            <li [ngClass]="{disabled:projects?.page == projects?.total_pages.length}">
+                <a (click)="newPage(projects.total_pages)">Last</a>
+            </li>
+        </ul>
+</div>
+</div>

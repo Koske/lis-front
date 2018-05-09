@@ -1,0 +1,18 @@
+<form (ngSubmit)="onSubmitEtape()" #e="ngForm">
+  <h1>Etape</h1>
+  <div class="form-group">
+      <label>Name</label>
+      <input ngModel type="text" class="form-control" name="name" required>
+      <label>Description</label>
+      <input ngModel type="text" class="form-control" name="description" required>
+      <label>Start date</label>
+      <input ngModel type="date" class="form-control" name="dateStarted" placeholder="mm/dd/yyyy" id="datepicker">
+      <label>End date</label>
+      <input ngModel type="date" class="form-control" name="dateEnded" placeholder="mm/dd/yyyy" id="datepicker">
+  </div>
+  <button
+    class="btn btn-primary"
+    type="submit"
+    [disabled]="!e.valid">Submit
+  </button>
+ </form>

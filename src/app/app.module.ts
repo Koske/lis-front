@@ -20,13 +20,30 @@ import { CheckInService } from './service/check-in.service';
 import { CheckOutService } from './service/check-out.service';
 import { UserIsCheckedInService } from './service/user-is-checked-in.service';
 import { DeleteUserService } from './service/delete-user.service';
+import { ProjectsComponent } from './projects/projects.component';
+import { EditprojectsComponent } from './projects/editprojects/editprojects.component';
+import { EtapeComponent } from './projects/etape/etape.component';
+import { NewProjectComponent } from './projects/new-project/new-project.component';
+import { ProjectDetailsComponent } from './projects/project-details/project-details.component';
+import { TaskComponent } from './projects/task/task.component';
+import { EtapeDetailsComponent } from './projects/etape/etape-details/etape-details.component';
+import { TaskDetailsComponent } from './projects/task/task-details/task-details.component';
+import { ProjectService } from './service/project.service';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegistrationComponent},
     { path: 'user-table', component: UserTableComponent},
-    { path: 'edit-user/:id', component: EditUserComponent}
+    { path: 'edit-user/:id', component: EditUserComponent},
+    { path: 'new-project', component: NewProjectComponent},
+    { path: 'projects', component: ProjectsComponent},
+    { path: 'projects/:id/edit', component: EditprojectsComponent },
+    { path: 'projects/:id/details', component: ProjectDetailsComponent },
+    { path: 'projects/:id/etape', component: EtapeComponent },
+    { path: 'projects/:id/task', component: TaskComponent },
+    { path: 'projects/:id/task-details', component: TaskDetailsComponent },
+    { path: 'projects/:id/etape-details', component: EtapeDetailsComponent }
 ];
 
 
@@ -38,7 +55,15 @@ const appRoutes: Routes = [
     HomeComponent,
     RegistrationComponent,
     UserTableComponent,
-    EditUserComponent
+    EditUserComponent,
+    ProjectsComponent,
+    EditprojectsComponent,
+    EtapeComponent,
+    NewProjectComponent,
+    ProjectDetailsComponent,
+    TaskComponent,
+    EtapeDetailsComponent,
+    TaskDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +82,8 @@ const appRoutes: Routes = [
               CheckInService,
               CheckOutService,
               UserIsCheckedInService,
-              DeleteUserService],
+              DeleteUserService,
+              ProjectService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

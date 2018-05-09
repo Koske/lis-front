@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-6">
+      <ul class="list-group">
+          <li class="list-group-item">
+            <label>Task name: {{ task.name }}</label>
+          </li>
+          <li class="list-group-item">
+            <label>Task description: {{ task.description }}</label>
+          </li>
+          <li class="list-group-item">
+            <label>Task start date: {{ task.start }}</label>
+          </li>
+          <li class="list-group-item">
+            <label>Estimated time: {{ task.hour }}</label>
+          </li>
+          <li class="list-group-item">
+            <button *ngIf="task.end==null" type="button" (click)="onDone()" class="btn btn-primary">Done</button>
+            <label *ngIf="task.end!=null"> {{ task.end }}</label>
+          </li>
+      </ul>
+  </div>
