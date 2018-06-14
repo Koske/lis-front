@@ -5,8 +5,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import {HttpService} from './http/http.service';
-import {AuthService} from './auth/auth.service';
+import { HttpService } from './http/http.service';
+import { AuthService } from './auth/auth.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { FormsModule } from '@angular/forms';
 import { CreateUserService } from './service/create-user.service';
@@ -29,6 +29,13 @@ import { TaskComponent } from './projects/task/task.component';
 import { EtapeDetailsComponent } from './projects/etape/etape-details/etape-details.component';
 import { TaskDetailsComponent } from './projects/task/task-details/task-details.component';
 import { ProjectService } from './service/project.service';
+import { ParticipantService } from './service/participant.service';
+import { DatePipe } from '@angular/common';
+import { TaskEditComponent } from './projects/task/task-edit/task-edit.component';
+import { EditEtapeComponent } from './projects/etape/edit-etape/edit-etape.component';
+import { ReportComponent } from './report/report.component';
+import { ReportService } from './service/report.service';
+import { MonthlyReportComponent } from './report/monthly-report/monthly-report.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -43,7 +50,11 @@ const appRoutes: Routes = [
     { path: 'projects/:id/etape', component: EtapeComponent },
     { path: 'projects/:id/task', component: TaskComponent },
     { path: 'projects/:id/task-details', component: TaskDetailsComponent },
-    { path: 'projects/:id/etape-details', component: EtapeDetailsComponent }
+    { path: 'projects/:id/etape-details', component: EtapeDetailsComponent },
+    { path: 'projects/:id/edit-task', component: TaskEditComponent },
+    { path: 'projects/:id/edit-etape', component: EditEtapeComponent },
+    { path: 'report/:id', component: ReportComponent },
+    { path: 'report/:id/:month/:year', component: MonthlyReportComponent }
 ];
 
 
@@ -63,7 +74,11 @@ const appRoutes: Routes = [
     ProjectDetailsComponent,
     TaskComponent,
     EtapeDetailsComponent,
-    TaskDetailsComponent
+    TaskDetailsComponent,
+    TaskEditComponent,
+    EditEtapeComponent,
+    ReportComponent,
+    MonthlyReportComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +98,10 @@ const appRoutes: Routes = [
               CheckOutService,
               UserIsCheckedInService,
               DeleteUserService,
-              ProjectService],
+              ProjectService,
+              DatePipe,
+              ParticipantService,
+              ReportService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

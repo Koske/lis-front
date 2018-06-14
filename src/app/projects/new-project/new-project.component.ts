@@ -41,7 +41,7 @@ export class NewProjectComponent implements OnInit {
 
 
    this.projectService.newProject(this.project);
-   this.router.navigate(['projects']);
+   this.router.navigate(['/projects']);
 
 
 

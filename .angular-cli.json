@@ -20,14 +20,14 @@
       "prefix": "app",
       "styles": [
         "assets/plugins/morris/morris.css",
-        "assets/css/bootstrap.min.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "assets/css/icons.css",
         "assets/css/style.css",
         "styles.scss"
       ],
       "scripts": [
         "assets/js/jquery.min.js",
-        "assets/js/bootstrap.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "assets/js/modernizr.min.js",
         "assets/js/detect.js",
         "assets/js/fastclick.js",

@@ -94,6 +94,12 @@ export class UserTableComponent implements OnInit {
     }
   }
 
+  onDetails(){
+    if(this.userId != -1){
+     this.router.navigate(['/report', this.userId]);
+   }
+  }
+
   stashInfo(userId){
     if(this.userId == userId){
       this.userId = -1;

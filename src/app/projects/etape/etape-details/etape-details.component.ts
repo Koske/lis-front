@@ -41,4 +41,8 @@ export class EtapeDetailsComponent implements OnInit {
    this.router.navigate(['/projects', this.etapeId.id, 'task']);
 
  }
+
+ onEdit(){
+   this.router.navigate(['/projects', this.etapeId.id, 'edit-etape']);
+ }
 }
