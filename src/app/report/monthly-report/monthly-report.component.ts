@@ -32,6 +32,7 @@ export class MonthlyReportComponent implements OnInit {
     	let check_in = [];
     	let check_out = [];
     	let dates = [];
+      let pointBackgroundColors = [];
     	let hours = 0;
     	let minutes = 0;
     	let seconds = 0;
@@ -41,6 +42,12 @@ export class MonthlyReportComponent implements OnInit {
     		check_instr.push(i.start.substring(11, 19));
     		check_outstr.push(i.end.substring(11, 19));
     		dates.push(i.start.substring(0, 10));
+          
+          if(i.eight_hours == true){
+            pointBackgroundColors.push('green');
+          }else{
+            pointBackgroundColors.push('red');
+          }
     	}
 
     	check_instr.forEach((res)=> {
@@ -53,7 +60,7 @@ export class MonthlyReportComponent implements OnInit {
     		check_in.push(total);
     	});
 
-		check_outstr.forEach((res)=> {
+	  	check_outstr.forEach((res)=> {
     		hours = (parseInt(res.substring(0, 2)))*3600;
     		minutes = (parseInt(res.substring(3, 5)))*60;
     		seconds = (parseInt(res.substring(6, 8)));
@@ -65,6 +72,10 @@ export class MonthlyReportComponent implements OnInit {
 
     	console.log(check_in, check_out);
 
+    	Chart.defaults.global.defaultFontFamily = 'Arial';
+    	Chart.defaults.global.defaultFontColor = 'white';
+      Chart.defaults.scale.gridLines.color = 'white';
+      Chart.defaults.scale.gridLines.lineWidth = 0.2;
     	this.chart = new Chart('canvas', {
     		type: 'line',
     		data: {
@@ -74,13 +85,17 @@ export class MonthlyReportComponent implements OnInit {
     					data: check_in,
     					borderColor: '#3cba9f',
     					fill: false,
-    					label: "Check in"
+    					label: "Check in",
+              pointBackgroundColor: pointBackgroundColors,
+              pointRadius: 4
     				},
     				{
     					data: check_out,
     					borderColor: '#ffcc00',
     					fill: false,
-    					label: "Check out"
+    					label: "Check out",
+              pointBackgroundColor: pointBackgroundColors,
+              pointRadius: 4
     				},
     			]
     		},

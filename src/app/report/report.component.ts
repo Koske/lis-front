@@ -34,8 +34,10 @@ export class ReportComponent implements OnInit {
   		this.firstName = response.user.first_name;
   		this.lastName = response.user.last_name;
   		this.info = response;
-  		console.log(response);
+      console.log(response);
+      
   	});
+    
   }
 
   minusYear(){
@@ -91,6 +93,10 @@ export class ReportComponent implements OnInit {
   }
   onDec(){
     this.router.navigate(['/report', this.userId.id, 12, this.currentYear]);
+  }
+
+  onEditHistory(){
+    this.router.navigate(['/edit-presence-report', this.userId.id]);
   }
 
 

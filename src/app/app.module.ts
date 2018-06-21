@@ -30,12 +30,15 @@ import { EtapeDetailsComponent } from './projects/etape/etape-details/etape-deta
 import { TaskDetailsComponent } from './projects/task/task-details/task-details.component';
 import { ProjectService } from './service/project.service';
 import { ParticipantService } from './service/participant.service';
+import { PresenceService } from './service/presence.service';
 import { DatePipe } from '@angular/common';
 import { TaskEditComponent } from './projects/task/task-edit/task-edit.component';
 import { EditEtapeComponent } from './projects/etape/edit-etape/edit-etape.component';
 import { ReportComponent } from './report/report.component';
 import { ReportService } from './service/report.service';
 import { MonthlyReportComponent } from './report/monthly-report/monthly-report.component';
+import { EditPresenceComponent } from './edit-presence/edit-presence.component';
+import { EditPresenceReportComponent } from './edit-presence/edit-presence-report/edit-presence-report.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -54,7 +57,9 @@ const appRoutes: Routes = [
     { path: 'projects/:id/edit-task', component: TaskEditComponent },
     { path: 'projects/:id/edit-etape', component: EditEtapeComponent },
     { path: 'report/:id', component: ReportComponent },
-    { path: 'report/:id/:month/:year', component: MonthlyReportComponent }
+    { path: 'report/:id/:month/:year', component: MonthlyReportComponent },
+    { path: 'edit-presence', component: EditPresenceComponent },
+    { path: 'edit-presence-report/:id', component: EditPresenceReportComponent }
 ];
 
 
@@ -78,7 +83,10 @@ const appRoutes: Routes = [
     TaskEditComponent,
     EditEtapeComponent,
     ReportComponent,
-    MonthlyReportComponent
+    MonthlyReportComponent,
+    EditPresenceComponent,
+    EditPresenceReportComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -101,7 +109,8 @@ const appRoutes: Routes = [
               ProjectService,
               DatePipe,
               ParticipantService,
-              ReportService],
+              ReportService,
+              PresenceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

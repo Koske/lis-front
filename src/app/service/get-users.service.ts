@@ -18,4 +18,17 @@ export class GetUsersService {
         
         return this.httpService.get('users/get', params, true);
       }
+
+    getCurrentUser(){
+    	return this.httpService.get('user/current');
+    }
+
+    getAllUsers(page: any, perPage: any){
+        const params:any = {
+            page: page,
+            perPage: perPage
+        }
+        
+        return this.httpService.get('users/get', params, true);
+    }
 }

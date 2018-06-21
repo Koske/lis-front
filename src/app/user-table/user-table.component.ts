@@ -17,7 +17,8 @@ export class UserTableComponent implements OnInit {
   totalPages: any;
   searchPages: any;
   userId: number = -1;
-
+  again: boolean = true;
+  
   constructor(private service: GetUsersService, 
               private searchService: SearchService,
               private deleteService: DeleteUserService,
@@ -29,40 +30,71 @@ export class UserTableComponent implements OnInit {
   }
 
   newPage(page){
-    this.pages = [];
-    this.getAllUsers(page);
+    if(this.userId!= -1){
+      let id2 = this.userId.toString();
+      let table = document.getElementById(id2);
+      table.classList.toggle("active");
+      this.userId = -1;
+    }
+      this.getAllUsers(page);
+
   }
 
   previousPage(page) {
-    this.pages = [];
-    let previousPage = Number(page)-1;
+    if(this.userId!=-1){
+      let id2 = this.userId.toString();
+      let table = document.getElementById(id2);
+      table.classList.toggle("active");
+      this.userId = -1;
+   }
+      let previousPage = Number(page)-1;
     if(page-1 != 1){
       this.getAllUsers(page);
-    }else if(page !=1)
-    {
+   }else if(page !=1){
       this.getAllUsers(page);
     }
   }
 
   nextPage(page, total) {
-    this.pages = [];
+    if(this.userId!=-1){
+     let id2 = this.userId.toString();
+     let table = document.getElementById(id2);
+     table.classList.toggle("active");
+     this.userId = -1;
+   }
     let nextPage = Number(page)+1;
     if(nextPage-1 != total){
-      this.getAllUsers(nextPage);
-    }
+     this.getAllUsers(nextPage);
+  }
   }
 
   getAllUsers(page){
-    this.service.getUsers(this.users, page, 5).subscribe(data => {
-      console.log('asdasdasdjaskjdasd');
-      console.log(data);
-      this.totalPages = data;
-      for(let i = 1; i <= this.totalPages.total_pages; i++){
-        this.pages.push(i);
-      }
+    this.service.getUsers(this.users, page, 5).subscribe((response: any) => {
+       this.pages = [];
+       this.users = response;
+       console.log(response);
+       this.totalPages = response;
+       for(let i = 1; i <= response.total_pages; i++){
+         for(let k = 0; k < this.pages.length; k++){
+           if(this.pages[k]==i){
+           this.again = false;
+           }
+         }
+           if(this.again){
+             this.pages.push(i);
+           }
+       }
+       this.totalPages.total_pages = this.pages;
 
-      this.totalPages.total_pages = this.pages;
-      this.users = data;
+      // console.log('asdasdasdjaskjdasd');
+      // console.log(data);
+      // this.totalPages = data;
+      // for(let i = 1; i <= this.totalPages.total_pages; i++){
+      //   this.pages.push(i);
+      // }
+
+      // this.totalPages.total_pages = this.pages;
+      // this.users = data;
     });
   }
 
@@ -90,7 +122,10 @@ export class UserTableComponent implements OnInit {
     if(this.userId != -1){
       if(confirm("Are you sure to delete ")) {
         this.deleteService.deleteUser(this.userId);
+        this.userId=-1;
+        this.getAllUsers(1);
       }
+
     }
   }
 

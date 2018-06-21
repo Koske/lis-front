@@ -26,6 +26,7 @@
     "core-js": "^2.4.1",
     "node-sass": "^4.8.3",
     "rxjs": "^5.5.6",
+    "timepicker.js": "^2.3.0",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

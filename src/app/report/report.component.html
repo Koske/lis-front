@@ -101,14 +101,19 @@
     <h2 style="display: inline-block;"> </h2>
     <h2 style="display: inline-block;"> {{ lastName }}</h2>
   </div>
-  <div class="col-md-8" style="display: inline-block;right: 170px">
-    <button style="display: inline-block;margin-left: 270px;" class="btn-primary" id="left-primary"
-    (click)="minusYear()"
-    ><</button>
-    <h1 style="display: inline-block;" class="currentYear"> {{ currentYear }} </h1>
-    <button style="display: inline-block;" class="btn-primary" id="right-primary"
-    (click)="plusYear()"
-    >></button>
+  <div class="col-md-8" style="display: inline-block;">
+    <div class="col-md-6">
+      <button style="display: inline-block;" class="btn btn-primary" id="left-primary"
+      (click)="minusYear()"
+      ><</button>
+      <h1 style="display: inline-block;" class="currentYear"> {{ currentYear }} </h1>
+      <button style="display: inline-block;" class="btn btn-primary" id="right-primary"
+      (click)="plusYear()"
+      >></button>
+    </div>
+    <div class="col-md-2" style="float: right;">
+      <button (click)="onEditHistory()" class="btn btn-info" style="float: right">Edited time</button>
+    </div>
   </div>
 </div>
 
@@ -117,33 +122,48 @@
       <div class="col-md-4" >
         <div class="panel panel-color panel-primary" (click)="onJan()" style="cursor: pointer;">
           <div class="panel-heading">
-             <h3 class="panel-title">January</h3>
+             <h3 class="panel-title" style="text-align: center;">January</h3>
           </div>
           <div class="panel-body">
-              <p>Average check in time: {{ info?.inJanSend }}</p>
-              <p>Average check out time: {{ info?.outJanSend }}</p>
+              <p style="text-align: center;">Average check in time: {{ info?.inJanSend }}</p>
+              <p style="text-align: center;">Average check out time: {{ info?.outJanSend }}</p>
+              <p style="text-align: center;" *ngIf="info?.autoCloseJan">Workdays autoclosed: {{ info?.autoCloseJan }}</p>
+              <p style="text-align: center;color: red"
+                *ngIf="info?.notFTJan">Workday wasn't 8 hours: {{ info?.notFTJan }} </p>
+              <p style="text-align: center;color: green"
+              *ngIf="info?.FTJan">Workday was more than 8 hours: {{ info?.FTJan }} </p>
           </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="panel panel-color panel-primary" (click)="onFeb()" style="cursor: pointer;">
           <div class="panel-heading">
-             <h3 class="panel-title">February</h3>
+             <h3 class="panel-title" style="text-align: center;">February</h3>
           </div>
           <div class="panel-body">
-              <p>Average check in time: {{ info?.inFebSend }}</p>
-              <p>Average check out time: {{ info?.OutFebSend }}</p>
+              <p style="text-align: center;">Average check in time: {{ info?.inFebSend }}</p>
+              <p style="text-align: center;">Average check out time: {{ info?.OutFebSend }}</p>
+              <p style="text-align: center;" *ngIf="info?.autoCloseFeb">Workdays autoclosed: {{ info?.autoCloseFeb }}</p>
+              <p style="text-align: center;color: red"
+                *ngIf="info?.notFTFeb">Workday wasn't 8 hours: {{ info?.notFTFeb }} </p>
+              <p style="text-align: center;color: green"
+              *ngIf="info?.FTFeb">Workday was more than 8 hours: {{ info?.FTFeb }} </p>                
           </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="panel panel-color panel-primary" (click)="onMar()" style="cursor: pointer;">
           <div class="panel-heading">
-             <h3 class="panel-title">March</h3>
+             <h3 class="panel-title" style="text-align: center;">March</h3>
           </div>
           <div class="panel-body">
-              <p>Average check in time: {{ info?.inMarSend }}</p>
-              <p>Average check out time: {{ info?.outMarSend }}</p>
+              <p style="text-align: center;">Average check in time: {{ info?.inMarSend }}</p>
+              <p style="text-align: center;">Average check out time: {{ info?.outMarSend }}</p>
+              <p style="text-align: center;" *ngIf="info?.autoCloseMar">Workdays autoclosed: {{ info?.autoCloseMar }}</p>
+              <p style="text-align: center;color: red"
+                *ngIf="info?.notFTMar">Workday wasn't 8 hours: {{ info?.notFTMar }} </p>
+              <p style="text-align: center;color: green"
+              *ngIf="info?.FTMar">Workday was more than 8 hours: {{ info?.FTMar }} </p>
           </div>
         </div>
       </div>
@@ -152,33 +172,48 @@
       <div class="col-md-4">
         <div class="panel panel-color panel-primary" (click)="onApr()" style="cursor: pointer;">
           <div class="panel-heading">
-             <h3 class="panel-title">April</h3>
+             <h3 class="panel-title" style="text-align: center;">April</h3>
           </div>
           <div class="panel-body">
-              <p>Average check in time: {{ info?.inAprSend }}</p>
-              <p>Average check out time: {{ info?.outAprSend }}</p>
+              <p style="text-align: center;">Average check in time: {{ info?.inAprSend }}</p>
+              <p style="text-align: center;">Average check out time: {{ info?.outAprSend }}</p>
+              <p style="text-align: center;" *ngIf="info?.autoCloseApr">Workdays autoclosed: {{ info?.autoCloseApr }}</p>
+              <p style="text-align: center;color: red"
+                *ngIf="info?.notFTApr">Workday wasn't 8 hours: {{ info?.notFTApr }} </p>
+              <p style="text-align: center;color: green"
+              *ngIf="info?.FTApr">Workday was more than 8 hours: {{ info?.FTApr }} </p>
           </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="panel panel-color panel-primary" (click)="onMay()" style="cursor: pointer;">
           <div class="panel-heading">
-             <h3 class="panel-title">May</h3>
+             <h3 class="panel-title" style="text-align: center;">May</h3>
           </div>
           <div class="panel-body">
-              <p>Average check in time: {{ info?.inMaySend }}</p>
-              <p>Average check out time: {{ info?.outMaySend }}</p>
+              <p style="text-align: center;">Average check in time: {{ info?.inMaySend }}</p>
+              <p style="text-align: center;">Average check out time: {{ info?.outMaySend }}</p>
+              <p style="text-align: center;" *ngIf="info?.autoCloseMay">Workdays autoclosed: {{ info?.autoCloseMay }}</p>
+              <p style="text-align: center;color: red"
+                *ngIf="info?.notFTMay">Workday wasn't 8 hours: {{ info?.notFTMay }} </p>
+              <p style="text-align: center;color: green"
+              *ngIf="info?.FTMay">Workday was more than 8 hours: {{ info?.FTMay }} </p>
           </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="panel panel-color panel-primary" (click)="onJun()" style="cursor: pointer;">
           <div class="panel-heading">
-             <h3 class="panel-title">June</h3>
+             <h3 class="panel-title" style="text-align: center;">June</h3>
           </div>
           <div class="panel-body">
-              <p>Average check in time: {{ info?.inJunSend }}</p>
-              <p>Average check out time: {{ info?.outJunSend }}</p>
+              <p style="text-align: center;">Average check in time: {{ info?.inJunSend }}</p>
+              <p style="text-align: center;">Average check out time: {{ info?.outJunSend }}</p>
+              <p style="text-align: center;" *ngIf="info?.autoCloseJun">Workdays autoclosed: {{ info?.autoCloseJun }}</p>
+              <p style="text-align: center;color: red"
+                *ngIf="info?.notFTJun">Workday wasn't 8 hours: {{ info?.notFTJun }} </p>
+              <p style="text-align: center;color: green"
+              *ngIf="info?.FTJun">Workday was more than 8 hours: {{ info?.FTJun }} </p>
           </div>
         </div>
       </div>
@@ -188,33 +223,48 @@
       <div class="col-md-4">
         <div class="panel panel-color panel-primary" (click)="onJul()" style="cursor: pointer;">
           <div class="panel-heading">
-             <h3 class="panel-title">July</h3>
+             <h3 class="panel-title" style="text-align: center;">July</h3>
           </div>
           <div class="panel-body">
-              <p>Average check in time: {{ info?.inJulSend }}</p>
-              <p>Average check out time: {{ info?.outJulSend }}</p>
+              <p style="text-align: center;">Average check in time: {{ info?.inJulSend }}</p>
+              <p style="text-align: center;">Average check out time: {{ info?.outJulSend }}</p>
+              <p style="text-align: center;" *ngIf="info?.autoCloseJul">Workdays autoclosed: {{ info?.autoCloseJul }}</p>
+              <p style="text-align: center;color: red"
+                *ngIf="info?.notFTJul">Workday wasn't 8 hours: {{ info?.notFTJul }} </p>
+              <p style="text-align: center;color: green"
+              *ngIf="info?.FTJul">Workday was more than 8 hours: {{ info?.FTJul }} </p>
           </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="panel panel-color panel-primary" (click)="onAug()" style="cursor: pointer;">
           <div class="panel-heading">
-             <h3 class="panel-title">August</h3>
+             <h3 class="panel-title" style="text-align: center;">August</h3>
           </div>
           <div class="panel-body">
-              <p>Average check in time: {{ info?.inAugSend }}</p>
-              <p>Average check out time: {{ info?.outAugSend }}</p>
+              <p style="text-align: center;">Average check in time: {{ info?.inAugSend }}</p>
+              <p style="text-align: center;">Average check out time: {{ info?.outAugSend }}</p>
+              <p style="text-align: center;" *ngIf="info?.autoCloseAug">Workdays autoclosed: {{ info?.autoCloseAug }}</p>
+              <p style="text-align: center;color: red"
+                *ngIf="info?.notFTAug">Workday wasn't 8 hours: {{ info?.notFTAug }} </p>
+              <p style="text-align: center;color: green"
+              *ngIf="info?.FTAug">Workday was more than 8 hours: {{ info?.FTAug }} </p>
           </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="panel panel-color panel-primary" (click)="onSep()" style="cursor: pointer;">
           <div class="panel-heading">
-             <h3 class="panel-title">September</h3>
+             <h3 class="panel-title" style="text-align: center;">September</h3>
           </div>
           <div class="panel-body">
-              <p>Average check in time: {{ info?.inSepSend }}</p>
-              <p>Average check out time: {{ info?.outSepSend }}</p>
+              <p style="text-align: center;">Average check in time: {{ info?.inSepSend }}</p>
+              <p style="text-align: center;">Average check out time: {{ info?.outSepSend }}</p>
+              <p style="text-align: center;" *ngIf="info?.autoCloseSep">Workdays autoclosed: {{ info?.autoCloseSep }}</p>
+              <p style="text-align: center;color: red"
+                *ngIf="info?.notFTSep">Workday wasn't 8 hours: {{ info?.notFTSep }} </p>
+              <p style="text-align: center;color: green"
+              *ngIf="info?.FTSep">Workday was more than 8 hours: {{ info?.FTSep }} </p>
           </div>
         </div>
       </div>
@@ -223,33 +273,48 @@
       <div class="col-md-4">
         <div class="panel panel-color panel-primary" (click)="onOct()" style="cursor: pointer;">
           <div class="panel-heading">
-             <h3 class="panel-title">October</h3>
+             <h3 class="panel-title" style="text-align: center;">October</h3>
           </div>
           <div class="panel-body">
-              <p>Average check in time: {{ info?.inOctSend }}</p>
-              <p>Average check out time: {{ info?.outOctSend }}</p>
+              <p style="text-align: center;">Average check in time: {{ info?.inOctSend }}</p>
+              <p style="text-align: center;">Average check out time: {{ info?.outOctSend }}</p>
+              <p style="text-align: center;" *ngIf="info?.autoCloseOct">Workdays autoclosed: {{ info?.autoCloseOct }}</p>
+              <p style="text-align: center;color: red"
+                *ngIf="info?.notFTOct">Workday wasn't 8 hours: {{ info?.notFTOct }} </p>
+              <p style="text-align: center;color: green"
+              *ngIf="info?.FTOct">Workday was more than 8 hours: {{ info?.FTOct }} </p>
           </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="panel panel-color panel-primary" (click)="onNov()" style="cursor: pointer;">
           <div class="panel-heading">
-             <h3 class="panel-title">November</h3>
+             <h3 class="panel-title" style="text-align: center;">November</h3>
           </div>
           <div class="panel-body">
-              <p>Average check in time: {{ info?.inNovSend }}</p>
-              <p>Average check out time: {{ info?.outNovSend }}</p>
+              <p style="text-align: center;">Average check in time: {{ info?.inNovSend }}</p>
+              <p style="text-align: center;">Average check out time: {{ info?.outNovSend }}</p>
+              <p style="text-align: center;" *ngIf="info?.autoCloseNov">Workdays autoclosed: {{ info?.autoCloseNov }}</p>
+              <p style="text-align: center;color: red"
+                *ngIf="info?.notFTNov">Workday wasn't 8 hours: {{ info?.notFTNov }} </p>
+              <p style="text-align: center;color: green"
+              *ngIf="info?.FTNov">Workday was more than 8 hours: {{ info?.FTNov }} </p>
           </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="panel panel-color panel-primary" (click)="onDec()" style="cursor: pointer;">
           <div class="panel-heading">
-             <h3 class="panel-title">December</h3>
+             <h3 class="panel-title" style="text-align: center;">December</h3>
           </div>
           <div class="panel-body">
-              <p>Average check in time: {{ info?.inDecSend }}</p>
-              <p>Average check out time: {{ info?.outDecSend }}</p>
+              <p style="text-align: center;">Average check in time: {{ info?.inDecSend }}</p>
+              <p style="text-align: center;">Average check out time: {{ info?.outDecSend }}</p>
+              <p style="text-align: center;" *ngIf="info?.autoCloseDec">Workdays autoclosed: {{ info?.autoCloseDec }}</p>
+              <p style="text-align: center;color: red"
+                *ngIf="info?.notFTDec">Workday wasn't 8 hours: {{ info?.notFTDec }} </p>]
+              <p style="text-align: center;color: green"
+              *ngIf="info?.FTDec">Workday was more than 8 hours: {{ info?.FTDec }} </p>
           </div>
         </div>
       </div>
